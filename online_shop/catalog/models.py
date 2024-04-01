@@ -130,6 +130,6 @@ class CashBack(models.Model):
     treshold = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.percent
+        return f"{self.percent}"
 
 
