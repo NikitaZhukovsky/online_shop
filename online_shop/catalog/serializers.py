@@ -15,14 +15,6 @@ class ProductImageSerializer(serializers.ModelSerializer):
         fields = ('image',)
 
 
-class ProductSerializer(serializers.ModelSerializer):
-    images = ProductImageSerializer(many=True, source='productimage_set')
-
-    class Meta:
-        model = Product
-        fields = ('id', 'article', 'name', 'price', 'images')
-
-
 class SellerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seller
@@ -45,6 +37,14 @@ class ProductInCartSerializer(serializers.Serializer):
     price = serializers.DecimalField(max_digits=10, decimal_places=2)
     count = serializers.IntegerField()
     discount_percent = serializers.IntegerField()
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    images = ProductImageSerializer(many=True, source='productimage_set')
+
+    class Meta:
+        model = Product
+        fields = ('id', 'article', 'name', 'price', 'images')
 
 
 class CartSerializer(serializers.Serializer):
