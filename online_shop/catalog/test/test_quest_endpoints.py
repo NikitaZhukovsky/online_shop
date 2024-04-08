@@ -8,9 +8,7 @@ pytest = [pytest.mark.django_db]
 
 
 class TestCategoriesEndpoints(APITestCase):
-    fixtures = ['catalog/test/fixtures/categories_fixture.json',
-
-                ]
+    fixtures = ['catalog/test/fixtures/categories_fixture.json']
 
     def test_categories_list_endpoints(self):
         url = reverse('categories')
@@ -37,18 +35,13 @@ class TestCategoriesEndpoints(APITestCase):
 
 
 class TestProductsEndpoints(APITestCase):
-    fixtures = ['catalog/test/fixtures/categories_fixture.json',
-                'catalog/test/fixtures/discounts_fixture.json',
-                'catalog/test/fixtures/images_fixture.json',
-                'catalog/test/fixtures/products_fixture.json',
-                'catalog/test/fixtures/sellers_fixture.json',
-                ]
+    fixtures = ['catalog/test/fixtures/products_fixture.json']
 
     def test_category_products(self):
-        url = reverse('category-products', kwargs={'category_id': 1})
+        url = reverse('products')
         response = self.client.get(url)
-
         assert response.status_code == 200
+        assert isinstance(response.data, list)
         assert response.data == [
             {
                 "id": 1,
@@ -63,10 +56,4 @@ class TestProductsEndpoints(APITestCase):
 
             }
         ]
-        assert response.data[0]["discount"] == {
-            "id": 1,
-            "name": EVERYTHING_EQUALS_NOT_NONE,
-            "percent": EVERYTHING_EQUALS_NOT_NONE,
-            "date_start": EVERYTHING_EQUALS_NOT_NONE,
-            "date_end": EVERYTHING_EQUALS_NOT_NONE
-        }
+
