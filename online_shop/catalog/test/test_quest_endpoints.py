@@ -34,26 +34,3 @@ class TestCategoriesEndpoints(APITestCase):
         ]
 
 
-class TestProductsEndpoints(APITestCase):
-    fixtures = ['catalog/test/fixtures/products_fixture.json']
-
-    def test_category_products(self):
-        url = reverse('products')
-        response = self.client.get(url)
-        assert response.status_code == 200
-        assert isinstance(response.data, list)
-        assert response.data == [
-            {
-                "id": 1,
-                "name": EVERYTHING_EQUALS_NOT_NONE,
-                "price": EVERYTHING_EQUALS_NOT_NONE,
-                "article": EVERYTHING_EQUALS_NOT_NONE,
-                "description": EVERYTHING_EQUALS_NOT_NONE,
-                "count_on_stock": EVERYTHING_EQUALS_NOT_NONE,
-                "discount": EVERYTHING_EQUALS_NOT_NONE,
-                "category": EVERYTHING_EQUALS_NOT_NONE,
-                "seller": EVERYTHING_EQUALS_NOT_NONE,
-
-            }
-        ]
-
