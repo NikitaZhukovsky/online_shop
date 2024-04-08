@@ -153,8 +153,6 @@ class OrderSerializer(serializers.ModelSerializer):
                 user.cashback_points = 0
         user.save()
 
-
-
         order = Order.objects.create(total_sum=total_sum, user=user, **validated_data)
 
         for product in products:
