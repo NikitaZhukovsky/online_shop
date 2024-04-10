@@ -115,6 +115,8 @@ class Order(models.Model):
 
     delivery_notification_before = models.PositiveIntegerField(choices=NOTIF_TIMES, default=6)
 
+    is_notif_sent = models.BooleanField(default=False)
+
     def __str__(self):
         return f"{self.pk} {self.user.email}"
 
