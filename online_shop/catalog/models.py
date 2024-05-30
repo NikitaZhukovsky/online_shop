@@ -49,7 +49,7 @@ class Product(models.Model):
     description = models.TextField()
     count_on_stock = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    discount = models.ForeignKey(Discount, null= True, blank= True, on_delete=models.SET_NULL)
+    discount = models.ForeignKey(Discount, null=True, blank=True, on_delete=models.SET_NULL)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
 
