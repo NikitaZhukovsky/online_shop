@@ -27,15 +27,17 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
 # Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -191,8 +193,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CELERY_BROKER_URL = f'amqp://guest:guest@localhost'
-CELERY_RESULT_BACKEND = f'rpc://'
+CELERY_BROKER_URL = 'amqp://guest:guest@localhost'
+CELERY_RESULT_BACKEND = 'rpc://'
 CELERY_BROKER_SCHEDULER = 'django_celery_beat/schedulers:DatabaseScheduler'
 
 SWAGGER_SETTINGS = {
@@ -206,3 +208,7 @@ SWAGGER_SETTINGS = {
     }
 }
 
+TELEGRAM_API_KEY = env('TELEGRAM_API_KEY')
+SELLERS_URL = env('SELLERS_URL')
+AUTH_URL = env('AUTH_URL')
+CART_URL = env('CART_URL')
