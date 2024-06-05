@@ -39,3 +39,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r online_shop/requirements.txt
 
+      - name: Lint with Prospector
+        run: |
+          prospector || true
+
+      - name: Run Tests
+        run: |
+          cd online_shop
+          pytest
+
