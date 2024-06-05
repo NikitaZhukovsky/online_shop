@@ -112,7 +112,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
         if promocode:
             delta_promocode = date.today() - promocode.date_end
-
+ 
             if delta_promocode.days > 0:
                 promocode.percent = 0
         else:
@@ -159,5 +159,3 @@ class OrderSerializer(serializers.ModelSerializer):
             OrderProducts.objects.create(order=order, **product)
 
         return order
-
-        
