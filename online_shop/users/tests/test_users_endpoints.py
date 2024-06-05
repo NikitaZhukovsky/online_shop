@@ -34,9 +34,9 @@ class LoginTestCase(APITestCase):
             format='json'
         ).data['access']
 
-    # def test_login(self):
-    #     url = reverse('test-login')
-    #     self.client.credentials(HTTP_AUTHORIZATION=self.token)
-    #     response = self.client.get(url)
-    #     assert response.status_code == 200
-    #     assert response.data == 'darova'
+    def test_login(self):
+        url = reverse('test-login')
+        self.client.credentials(HTTP_AUTHORIZATION=self.token)
+        response = self.client.get(url)
+        assert response.status_code == 200
+        assert response.data == 'darova'
